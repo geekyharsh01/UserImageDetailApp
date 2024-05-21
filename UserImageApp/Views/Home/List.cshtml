@@ -1,0 +1,31 @@
+﻿@model IEnumerable<UserImageApp.Models.Upload>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Uploads</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Description</td>
+                <td>
+                    <img src="@Url.Action("ViewImage", "Home", new { id = item.ImageId.ToString() })" width="100" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Home", new { id = item.Id.ToString() })" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
